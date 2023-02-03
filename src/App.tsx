@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Header} from "./site/Header";
@@ -9,28 +9,23 @@ import {Button} from "./components/Button";
 
 
 function App() {
-    const Button1Foo = (subscriber: string, age: number) => {
-        console.log(subscriber, age)
-    }
-    const Button2Foo = (subscriber: string) => {
-        console.log(subscriber)
-    }
+let [a,setA]=useState(1)
 
-    const Button3Foo = () => {
-        console.log("hello, I'm stupid button ")
+    const onclickHandler = ()=>{
+    setA(++a)
+
+        console.log(a)
     }
 
-
+    const onclickNullHandler =()=>{
+   setA(a=0)
+    }
     return (
         <div className='App'>
 
-            {/*<button>MyYoutubeChannel-1</button>*/}
-            {/*<button>MyYoutubeChannel-2</button>*/}
-            < Button name={"YoutubeChannel_1"} callBack={() => Button1Foo('i am Vasya', 21)}/>
-            < Button name={"YoutubeChannel_2"} callBack={() => Button2Foo('i am Ivan')}/>
-            < Button name={"stupid button"} callBack={Button3Foo}/>
-
-
+<h1>{a}</h1>
+            <button onClick={onclickHandler}>number</button>
+            <button onClick={onclickNullHandler}>0</button>
         </div>
     );
 }
